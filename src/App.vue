@@ -5,7 +5,6 @@
         <a href="#" class="brand-logo center">{{titulo}}</a>
       </div>
     </nav>
-
       <div class="container">
       <div class="row">
         
@@ -51,7 +50,6 @@
         </div>
     </div>
 </div>
-         
   </div>
 </template>
 
