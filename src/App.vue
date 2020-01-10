@@ -23,7 +23,7 @@
 
       </div>
       </div>
-    <div id="fogos" class="fireworks">
+    <div id="fogos" class="">
       <div class="firework">
         <div class="explosion">
           <div class="spark green"></div>
