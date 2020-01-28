@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav>
-      <div class="nav-wrapper blue darken-1">
+      <div class="nav-wrapper color-change">
         <a href="#" class="brand-logo center">{{titulo}}</a>
       </div>
     </nav>
