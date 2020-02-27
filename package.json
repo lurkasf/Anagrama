@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "def-commit" : "git commit -m 'atualizando o codigo com algo'",
     "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
