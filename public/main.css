@@ -1,0 +1,33 @@
+.capitalizar{
+    text-transform: capitalize
+  }
+  .container  {
+    height: 100%;
+    width: 100%;
+  }
+  .container .row {
+    margin: 0 auto;
+  }
+  .vitoria{
+    background-color: rgb(147, 255, 121)
+  }
+  .derrota{
+    background-color: rgb(255, 121, 121)
+  }
+  .alert{
+    background-color: rgb(255, 201, 121)
+  }
+  input.alert::placeholder{
+    color: red;
+  }
+  .negrito{
+    color: black;
+    font-weight: bold;
+  }
+  ::placeholder{
+    color: rgb(65, 65, 65);
+  }
+  button{
+    min-width: 92px;
+    max-width: 135px;
+  }
