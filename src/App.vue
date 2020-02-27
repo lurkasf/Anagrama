@@ -11,7 +11,7 @@
         <div class="col s12 m6 offset-m3" >
           <div id="cardGame" class="card-panel hoverable center">
             <form @submit.prevent="confirmaTentativa">
-                <label><h5 class="capitalizar negrito" >{{palavraEmbaralhadaSave}}</h5></label>
+                <label><h5 class="capitalizar negrito" >{{palavraEmbaralhadaSave}}</h5></label><span v-if="showPercentage" class="percent">{{percent}}%</span>
                 <input id="inputTentativa" class="capitalizar" type="text" placeholder="inserir palavra" v-model="palavra">
                 <button class="waves-effect waves-light btn-small salvarPalavra">Salvar<i class="material-icons left">save</i></button>
             </form>
@@ -19,7 +19,6 @@
             <button @click="novaPalavra()" class="waves-effect waves-light btn-small novaPalavra">Nova Palavra<i class="material-icons left">shuffle</i></button>
           </div>
         </div>
-
       </div>
       </div>
     <div id="fogos" class="">
@@ -55,6 +54,7 @@
 
 <script>
   import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa
+  //import func from '../vue-temp/vue-editor-bridge';
   export default{
     data(){
       return{
@@ -63,13 +63,55 @@
         palavraEmbaralhadaSave : 'gamarana', //salva a palavra embaralhada para não perder quando editar no input do usuario
         originalWord : 'anagrama',
         palavras : words["words"], //salva em 'palavras' todas as palavras contidas no arquivo de palavras (words.json)
+        showPercentage: true,
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },
     mounted(){
       
     },
+    computed:{
+      percent : function similarity(){
+      var longer = this.originalWord;
+      var shorter = this.palavra;
+      if (this.originalWord.length < this.palavra.length) {
+        longer = this.palavra;
+        shorter = this.originalWord;
+      }
+      var longerLength = longer.length;
+      if (longerLength == 0) {
+        return 1.0;
+      }
+      return ((longerLength - this.editDistance(longer, shorter)) / parseFloat(longerLength)*100).toPrecision(3);
+    }
+    },
     methods:{
+      editDistance(longer, shorter) {
+        longer = longer.toLowerCase();
+        shorter = shorter.toLowerCase();
+
+        var costs = new Array();
+        for (var i = 0; i <= longer.length; i++) {
+          var lastValue = i;
+          for (var j = 0; j <= shorter.length; j++) {
+            if (i == 0)
+              costs[j] = j;
+            else {
+              if (j > 0) {
+                var newValue = costs[j - 1];
+                if (longer.charAt(i - 1) != shorter.charAt(j - 1))
+                  newValue = Math.min(Math.min(newValue, lastValue),
+                    costs[j]) + 1;
+                costs[j - 1] = lastValue;
+                lastValue = newValue;
+              }
+            }
+          }
+          if (i > 0)
+            costs[shorter.length] = lastValue;
+        }
+        return costs[shorter.length];
+      },
       confirmaTentativa(){
         if(this.palavra === ''){
           this.console.log('%c Nenhuma Palavra Enviada!', 'color: orange;font-weight:bold');
@@ -86,13 +128,11 @@
           this.setLoseStyle()
         }
       },
-
       novaPalavra(){
         this.pickWord()
         this.embaralha()
         this.limpaStyle() 
       },
-
       ///metodo para embaralhar a palavra original
       embaralha(){
         //codigo que mistura
@@ -136,6 +176,7 @@
   }
 //opções de icone: shuffle, loop, autorenew
 </script>
+
 
 <style scoped>
   
