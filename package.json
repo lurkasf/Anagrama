@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "def-commit" : "git commit -m 'atualizando o codigo com algo'",
+    "def-commit": "git commit -m 'atualizando o codigo com algo'",
     "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
@@ -14,10 +14,10 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "push-dir": "^0.4.1",
