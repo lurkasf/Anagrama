@@ -7,7 +7,10 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "def-commit": "git commit -m 'atualizando o codigo com algo'",
-    "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages"
+    "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages",
+    "remove-remote-page": "git push origin --delete gh-pages",
+    "clear-to-push" : "npm run remove-remote-page",
+    "clear-push-page" : "npm run clear-to-push && gh-deploy"
   },
   "dependencies": {
     "core-js": "^3.4.4",
