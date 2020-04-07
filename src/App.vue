@@ -71,11 +71,14 @@
       //Buscar palavras na API 
       axios.get('https://lurkasf.github.io/palavrasAPI/PT-BR/words.json')
       .then(response => (
-            this.palavras = response.data.words, this.console.log("API OK"), 
+            this.palavras = response.data.words, this.console.log("API OK")),
+
             error => {
+              this.console.log
                 this.console.error(error);
+                this.console.log("DEFAULT WORDS LOADED")
+                this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
             })
-          )
     },
     computed:{
       percent : function similarity(){
