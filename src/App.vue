@@ -53,8 +53,8 @@
 </template>
 
 <script>
-  import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa
-  //import func from '../vue-temp/vue-editor-bridge';
+  import axios from "axios";
+  //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
     data(){
       return{
@@ -62,13 +62,20 @@
         palavra : 'anagrama', //palavra atualmente escrita no input, muda de acordo com o que o user escreve
         palavraEmbaralhadaSave : 'gamarana', //salva a palavra embaralhada para não perder quando editar no input do usuario
         originalWord : 'anagrama',
-        palavras : words["words"], //salva em 'palavras' todas as palavras contidas no arquivo de palavras (words.json)
+        palavras : [], //variabel contendo as palavras buscadas pela api
         showPercentage: true,
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },
     mounted(){
-      
+      //Buscar palavras na API 
+      axios.get('https://lurkasf.github.io/palavrasAPI/PT-BR/words.json')
+      .then(response => (
+            this.palavras = response.data.words, this.console.log("API OK"), 
+            error => {
+                this.console.error(error);
+            })
+          )
     },
     computed:{
       percent : function similarity(){

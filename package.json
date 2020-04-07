@@ -13,6 +13,7 @@
     "clear-push-page": "npm run clear-to-push && npm run gh-deploy"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
   },
