@@ -10,7 +10,7 @@
     "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages",
     "remove-remote-page": "git push origin --delete gh-pages",
     "clear-to-push": "npm run remove-remote-page",
-    "clear-push-page": "npm run clear-to-push && npm run gh-deploy"
+    "clear-push-page": "npm run clear-to-push && npm run build &&npm run gh-deploy"
   },
   "dependencies": {
     "axios": "^0.19.2",
