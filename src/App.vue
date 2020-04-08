@@ -69,7 +69,7 @@
     },
     mounted(){
       //Buscar palavras na API 
-      axios.get('https://lurkasf.github.io/palavrasAPI/PT-BR/words.json')
+      axios.get('https://lurkasf.github.io/WordsAPI/PT-BR/words.json')
       .then(response => (
             this.palavras = response.data.words, this.console.log("API OK")),
 
