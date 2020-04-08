@@ -1,5 +1,8 @@
 # anagram
 
+## Descrição
+Jogo de Anagrama que utiliza a API de palavras
+
 ## Project setup
 ```
 npm install
@@ -20,5 +23,6 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Como jogar
+
+
