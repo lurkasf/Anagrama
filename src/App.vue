@@ -10,6 +10,12 @@
         
         <div class="col s12 m6 offset-m3" >
           <div id="cardGame" class="card-panel hoverable center">
+            <div style="position:relative">
+              <!--<a class="waves-effect waves-light btn-small pos-top-right"><i class="material-icons"></i></a>
+              <a class="btn-floating btn-large waves-effect waves-light red pos-top-right"><i class="material-icons">add</i></a>-->
+              <a class="pos-top-right"><i class="material-icons">more_vert</i></a>
+              <a @click="switchLanguage()" class="pos-top-right"><i class="material-icons">more_horiz</i></a>
+            </div>
             <form @submit.prevent="confirmaTentativa">
                 <label><h5 class="capitalizar negrito" >{{palavraEmbaralhadaSave}}</h5></label><span v-if="showPercentage" class="percent">{{percent}}%</span>
                 <input id="inputTentativa" class="capitalizar" type="text" placeholder="inserir palavra" v-model="palavra">
@@ -64,21 +70,13 @@
         originalWord : 'anagrama',
         palavras : [], //variabel contendo as palavras buscadas pela api
         showPercentage: true,
+        language: "PT-BR",
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },
     mounted(){
       //Buscar palavras na API 
-      axios.get('https://lurkasf.github.io/WordsAPI/PT-BR/words.json')
-      .then(response => (
-            this.palavras = response.data.words, this.console.log("API OK")),
-
-            error => {
-              this.console.log
-                this.console.error(error);
-                this.console.log("DEFAULT WORDS LOADED")
-                this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
-            })
+      this.buscarAPI()
     },
     computed:{
       percent : function similarity(){
@@ -181,6 +179,23 @@
       setAlertStyle(){
         this.setNewClass("cardGame", "alert")
         this.setNewClass("inputTentativa", "alert")
+      },
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      buscarAPI(){
+      if(this.language==undefined || this.language == null){
+        this.language = "PT-BR"
+      }
+      axios.get(`https://lurkasf.github.io/WordsAPI/${this.language}/words.json`)
+      .then(response => (this.palavras = response.data.words, this.console.log("API OK")),
+            error => {
+                this.console.log
+                this.console.error(error);
+                this.console.log("DEFAULT WORDS LOADED")
+                this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
+            })
+      },
+      switchLanguage(){
+        alert("AA")
       }
     },   
   }

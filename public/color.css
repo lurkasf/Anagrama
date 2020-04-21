@@ -1,4 +1,10 @@
-
+.pos-top-right{
+  margin-top: -10px;
+  margin-right: -10px;
+  position: absolute;
+  top:0;
+  right:0;
+} 
 
 .color-change {
     width:100%;
