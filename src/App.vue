@@ -13,6 +13,12 @@
             <div style="position:relative">
               <!--<a class="waves-effect waves-light btn-small pos-top-right"><i class="material-icons"></i></a>
               <a class="btn-floating btn-large waves-effect waves-light red pos-top-right"><i class="material-icons">add</i></a>-->
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn color="primary" dark v-on="on">Button</v-btn>
+                </template>
+                <span>Tooltip</span>
+              </v-tooltip>
               <a class="pos-top-right"><i class="material-icons">more_vert</i></a>
               <a @click="switchLanguage()" class="pos-top-right"><i class="material-icons">more_horiz</i></a>
             </div>
