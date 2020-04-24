@@ -200,7 +200,7 @@
           this.language = 'PT-BR'
         }
         this.buscarAPI()
-      },
+      }
     },   
   }
 //opções de icone: shuffle, loop, autorenew
