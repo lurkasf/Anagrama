@@ -180,23 +180,27 @@
         this.setNewClass("cardGame", "alert")
         this.setNewClass("inputTentativa", "alert")
       },
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
       buscarAPI(){
-      if(this.language==undefined || this.language == null){
-        this.language = "PT-BR"
-      }
-      axios.get(`https://lurkasf.github.io/WordsAPI/${this.language}/words.json`)
-      .then(response => (this.palavras = response.data.words, this.console.log("API OK")),
-            error => {
-                this.console.log
-                this.console.error(error);
-                this.console.log("DEFAULT WORDS LOADED")
-                this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
-            })
+        if(this.language==undefined || this.language == null){
+          this.language = "PT-BR"
+        }
+        axios.get(`https://lurkasf.github.io/WordsAPI/${this.language}/words.json`)
+        .then(response => (this.palavras = response.data.words, this.console.log("API OK")),
+              error => {
+                  this.console.log
+                  this.console.error(error);
+                  this.console.log("DEFAULT WORDS LOADED")
+                  this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
+              })
       },
       switchLanguage(){
-        //alert("AA")
-      }
+        if(this.language == 'PT-BR'){
+          this.language = 'EN'
+        }else{
+          this.language = 'PT-BR'
+        }
+        this.buscarAPI()
+      },
     },   
   }
 //opções de icone: shuffle, loop, autorenew
