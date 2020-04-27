@@ -12,30 +12,9 @@
             <div style="position:relative">
               <!--<a class="waves-effect waves-light btn-small pos-top-right"><i class="material-icons"></i></a>
               <a class="btn-floating btn-large waves-effect waves-light red pos-top-right"><i class="material-icons">add</i></a>-->
-              <a class="pos-top-right"><i class="material-icons">more_vert</i></a>
-              <a @click="switchLanguage()" class="pos-top-right"><i class="material-icons">more_horiz</i></a>
               
-              <v-menu bottom left>
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    dark
-                    icon
-                    v-on="on"
-                  >
-                    <v-icon>mdi-dots-vertical</v-icon>
-                  </v-btn>
-                </template>
-
-                <v-list>
-                  <v-list-item
-                    v-for="(item, i) in items"
-                    :key="i"
-                  >
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-
+              <!--<a class="pos-top-right"><i class="material-icons">more_vert</i></a>--> 
+              <span @click="switchLanguage()" class="pos-top-right" id="select-lang">{{language}}</span>
             </div>
             <div class="buttons">
               <form @submit.prevent="confirmaTentativa">
@@ -82,8 +61,9 @@
 </template>
 
 <script>
-  //import menu from './components/menu-button' 
   import axios from "axios";
+
+
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
     data(){
@@ -95,12 +75,6 @@
         palavras : [], //variabel contendo as palavras buscadas pela api
         showPercentage: true,
         language: "PT-BR",
-        items: [
-          { title: 'Click Me' },
-          { title: 'Click Me' },
-          { title: 'Click Me' },
-          { title: 'Click Me 2' },
-        ],
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },

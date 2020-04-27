@@ -13,6 +13,7 @@
     "clear-push-page": "npm run clear-to-push && npm run build && npm run gh-deploy"
   },
   "dependencies": {
+    "@popperjs/core": "^2.3.3",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "vue": "^2.6.10"
