@@ -7,7 +7,6 @@
     </nav>
       <div class="container">
       <div class="row">
-        
         <div class="col s12 m6 offset-m3" >
           <div id="cardGame" class="card-panel hoverable center">
             <div style="position:relative">
@@ -15,14 +14,38 @@
               <a class="btn-floating btn-large waves-effect waves-light red pos-top-right"><i class="material-icons">add</i></a>-->
               <a class="pos-top-right"><i class="material-icons">more_vert</i></a>
               <a @click="switchLanguage()" class="pos-top-right"><i class="material-icons">more_horiz</i></a>
+              
+              <v-menu bottom left>
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    dark
+                    icon
+                    v-on="on"
+                  >
+                    <v-icon>mdi-dots-vertical</v-icon>
+                  </v-btn>
+                </template>
+
+                <v-list>
+                  <v-list-item
+                    v-for="(item, i) in items"
+                    :key="i"
+                  >
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+
             </div>
-            <form @submit.prevent="confirmaTentativa">
-                <label><h5 class="capitalizar negrito" >{{palavraEmbaralhadaSave}}</h5></label><span v-if="showPercentage" class="percent">{{percent}}%</span>
-                <input id="inputTentativa" class="capitalizar" type="text" placeholder="inserir palavra" v-model="palavra">
-                <button class="waves-effect waves-light btn-small salvarPalavra">Salvar<i class="material-icons left">save</i></button>
-            </form>
-            <!-- <button @click="embaralha()" class="waves-effect waves-light btn-small">Embaralha</button> -->
-            <button @click="novaPalavra()" class="waves-effect waves-light btn-small novaPalavra">Nova Palavra<i class="material-icons left">shuffle</i></button>
+            <div class="buttons">
+              <form @submit.prevent="confirmaTentativa">
+                  <label><h5 class="capitalizar negrito" >{{palavraEmbaralhadaSave}}</h5></label><span v-if="showPercentage" class="percent">{{percent}}%</span>
+                  <input id="inputTentativa" class="capitalizar" type="text" placeholder="inserir palavra" v-model="palavra">
+                  <button class="waves-effect waves-light btn-small salvarPalavra">Salvar<i class="material-icons left">save</i></button>
+              </form>
+              <!-- <button @click="embaralha()" class="waves-effect waves-light btn-small">Embaralha</button> -->
+              <button @click="novaPalavra()" class="waves-effect waves-light btn-small novaPalavra">Nova Palavra<i class="material-icons left">shuffle</i></button>
+            </div>
           </div>
         </div>
       </div>
@@ -59,6 +82,7 @@
 </template>
 
 <script>
+  //import menu from './components/menu-button' 
   import axios from "axios";
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
@@ -71,6 +95,12 @@
         palavras : [], //variabel contendo as palavras buscadas pela api
         showPercentage: true,
         language: "PT-BR",
+        items: [
+          { title: 'Click Me' },
+          { title: 'Click Me' },
+          { title: 'Click Me' },
+          { title: 'Click Me 2' },
+        ],
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },
