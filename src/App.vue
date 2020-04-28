@@ -191,8 +191,21 @@
                   this.console.log
                   this.console.error(error);
                   this.console.log("DEFAULT WORDS LOADED")
-                  this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
+                  this.getDefaultWords();
               })
+      },
+      getDefaultWords(){
+        switch (this.language) {
+          case 'PT-BR':
+            this.palavras = ["bola", "carro", "manga", "uva", "sapo", "macaco", "abacate", "acerola", "garrafa", "anagrama", "helicóptero", "mingau", "canguru"]
+            break;
+          case 'EN':
+            this.palavras = ["car", "man", "boy", "girl"]
+            break;
+          default:
+            this.palavras = ["NoWord?"]
+            break;
+        }
       },
       switchLanguage(){
         if(this.language == 'PT-BR'){
