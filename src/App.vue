@@ -59,11 +59,8 @@
 </div>
   </div>
 </template>
-
 <script>
   import axios from "axios";
-
-
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
     data(){
@@ -189,7 +186,7 @@
           this.language = "PT-BR"
         }
         axios.get(`https://lurkasf.github.io/WordsAPI/${this.language}/words.json`)
-        .then(response => (this.palavras = response.data.words, this.console.log("API OK")),
+        .then(response => (this.palavras = response.data.words, this.console.log(`API ${this.language} OK`)),
               error => {
                   this.console.log
                   this.console.error(error);
@@ -204,7 +201,7 @@
           this.language = 'PT-BR'
         }
         this.buscarAPI()
-      }
+      },
     },   
   }
 //opções de icone: shuffle, loop, autorenew
