@@ -64,6 +64,10 @@
   //import CardGame from './components/CardGame'
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
+    name: 'App',
+    components: {
+      //CardGame,
+    },
     data(){
       return{
         titulo : 'A N A G R A M A', //titulo que fica na barra superior
@@ -211,7 +215,12 @@
         }
       },
       switchLanguage(){
-        
+        let pos = this.languages.indexOf(this.language)
+        if(pos == this.languages.length-1){
+          this.language = this.languages[0]
+        }else{
+          this.language = this.languages[pos+1]
+        }
         this.buscarAPI()
         this.novaPalavra()
       },
