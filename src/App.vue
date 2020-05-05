@@ -29,44 +29,18 @@
         </div>
       </div>
       </div>
-    <div id="fogos" class="">
-      <div class="firework">
-        <div class="explosion">
-          <div class="spark green"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark blue"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark red"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark red"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark yellow"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark blue"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark green"></div>
-        </div>
-        <div class="explosion">
-          <div class="spark yellow"></div>
-        </div>
-    </div>
+      <Fireworks></Fireworks>
 </div>
-  </div>
 </template>
 <script>
   import axios from "axios";
+  import Fireworks from './components/Fireworks'
   //import CardGame from './components/CardGame'
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
     name: 'App',
     components: {
-      //CardGame,
+      Fireworks,
     },
     data(){
       return{
