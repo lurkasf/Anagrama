@@ -9,27 +9,23 @@
     "build-deploy": "npm run build && npm run gh-deploy",
     "clear-push-page": "npm run clear-to-push && npm run build && npm run gh-deploy",
     "clear-to-push": "npm run remove-remote-page",
-    "def-commit": "git commit -m 'atualizando o codigo com algo'",
+    "def-commit": "git add . && git commit -m 'atualizando o codigo com algo'",
     "gh-deploy": "git add dist && git commit -m 'Atualizando github pages com a versao atual'; git subtree push --prefix dist origin gh-pages",
     "remove-remote-page": "git push origin --delete gh-pages"
   },
   "dependencies": {
-    "@popperjs/core": "^2.3.3",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
-    "register-service-worker": "^1.7.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.1",
     "@vue/cli-plugin-eslint": "^4.3.1",
-    "@vue/cli-plugin-pwa": "^4.3.1",
     "@vue/cli-service": "^4.3.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "push-dir": "^0.4.1",
-    "sw-precache-webpack-plugin": "^0.11.5",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

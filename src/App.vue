@@ -61,6 +61,7 @@
 </template>
 <script>
   import axios from "axios";
+  //import CardGame from './components/CardGame'
   //import words from './assets/words.json' //arquivo que contêm todas as palavras que rodam no programa //deprecated
   export default{
     data(){
@@ -71,13 +72,15 @@
         originalWord : 'anagrama',
         palavras : [], //variabel contendo as palavras buscadas pela api
         showPercentage: true,
-        language: "PT-BR",
+        languages: ['PT-BR','EN','ES'],
+        language: 'PT-BR',
         get console() { return window.console; } //pegar o console pra poder usar, sem isso ele não conhece console
       }
     },
     mounted(){
       //Buscar palavras na API 
       this.buscarAPI()
+      this.console.log(this.isMobile())
     },
     computed:{
       percent : function similarity(){
@@ -208,13 +211,18 @@
         }
       },
       switchLanguage(){
-        if(this.language == 'PT-BR'){
-          this.language = 'EN'
-        }else{
-          this.language = 'PT-BR'
-        }
+        
         this.buscarAPI()
+        this.novaPalavra()
       },
+      //acho que nem vou usar isso
+      isMobile() {
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          return true
+        } else {
+          return false
+        }
+      }
     },   
   }
 //opções de icone: shuffle, loop, autorenew
