@@ -167,12 +167,13 @@
           this.language = "PT-BR"
         }
         axios.get(`https://lurkasf.github.io/WordsAPI/${this.language}/words.json`)
-        .then(response => (this.palavras = response.data.words, this.console.log(`API ${this.language} OK`)),
+        .then(response => (this.palavras = response.data.words, this.console.log(`API ${this.language} OK`),this.novaPalavra()),
               error => {
                   this.console.log
                   this.console.error(error);
                   this.console.log("DEFAULT WORDS LOADED")
                   this.getDefaultWords();
+                  this.novaPalavra()
               })
       },
       getDefaultWords(){
@@ -196,7 +197,6 @@
           this.language = this.languages[pos+1]
         }
         this.buscarAPI()
-        this.novaPalavra()
       },
       //acho que nem vou usar isso
       isMobile() {
