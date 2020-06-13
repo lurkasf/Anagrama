@@ -173,7 +173,7 @@
                   this.console.error(error);
                   this.console.log("DEFAULT WORDS LOADED")
                   this.getDefaultWords();
-                  this.novaPalavra()
+                  this.novaPalavra() 
               })
       },
       getDefaultWords(){
